@@ -1,0 +1,25 @@
+shutil - shell utilities
+shutil.copy(source, destination)
+--> returns a string of the path of the copied file
+
+>>> import shutil, os
+>>> os.chdir('C:\\')
+>>> shutil.copy('C:\\spam.txt', 'C:\\delicious')
+'C:\\delicious\\spam.txt'
+>>> shutil.copy('eggs.txt', 'C:\\delicious\\eggs2.txt')
+'C:\\delicious\\eggs2.txt'
+
+shutil.copytree(src, dest)
+--> copies the source dir/file and all contents
+
+shutil.move(source, destination)
+--> moves source dir/file and its contents
+>>> import shutil
+>>> shutil.move('C:\\bacon.txt', 'C:\\eggs')
+'C:\\eggs\\bacon.txt'
+
+• Calling os.unlink(path) will delete the file at path.
+• Calling os.rmdir(path) will delete the folder at path. This folder must be
+empty of any files or folders.
+• Calling shutil.rmtree(path) will remove the folder at path, and all files
+and folders it contains will also be deleted.
