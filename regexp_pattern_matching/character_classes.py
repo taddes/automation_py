@@ -57,3 +57,47 @@ wholeStringIsNum = re.compile(r'^\d+$')
 wholeStringIsNum.search('1234567890')
 print(wholeStringIsNum.search('12345xyz67890') == None)
 print(wholeStringIsNum.search('12 34567890') == None)
+
+
+"""
+    Wildard Character .
+    . will match anything except for a newline
+"""
+atRegex = re.compile(r'.at')
+print(atRegex.findall('The cat in the hat sat on the flat mat'))
+
+"""
+    Match Everything .*
+    . anything that is a single character except newline
+    * zero or more of the preceding character
+"""
+
+
+nameRegex = re.compile(r'First Name: (.*) Last Name: (.*)')
+nameMo = nameRegex.search('First Name: Taddes Last Name: Korris')
+print(nameMo.group(1))
+print(nameMo.group(2))
+
+
+# Non-greedy .*?
+# Matches the shortest
+nonGreedyRe = re.compile(r'<.*?>')
+nonGMo = nonGreedyRe.search('<To serve ma> for dinner.>')
+print(nonGMo.group())
+
+
+# Greedy mode
+greedyRe = re.compile(r'<.*>')
+greedyGMo = greedyRe.search('<To serve ma> for dinner.>')
+print(greedyGMo.group())
+
+"""
+    Match newlines with Dot character
+    re.DOTALL as second arg to re.compile()
+"""
+noNewlineRe = re.compile('.*')
+print(noNewlineRe.search('Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
+
+newlineRe = re.compile('.*', re.DOTALL)
+print(newlineRe.search('Serve the public trust.\nProtect the innocent.\nUphold the law.').group())
+
